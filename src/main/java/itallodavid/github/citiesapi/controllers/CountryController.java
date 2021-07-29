@@ -1,5 +1,6 @@
 package itallodavid.github.citiesapi.controllers;
 
+import itallodavid.github.citiesapi.dto.UniqueValueResponseDTO;
 import itallodavid.github.citiesapi.exceptions.EntityNotFoundException;
 import itallodavid.github.citiesapi.models.Country;
 import itallodavid.github.citiesapi.services.CountryService;
@@ -26,5 +27,10 @@ public class CountryController {
     @GetMapping(value = "/{id}",produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Country> getCountry(@PathVariable Long id) throws EntityNotFoundException {
         return ResponseEntity.ok(service.getCountry(id));
+    }
+
+    @GetMapping(value = "/{id}/bacen", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<UniqueValueResponseDTO> getCountryBacen(@PathVariable Long id) throws EntityNotFoundException {
+        return ResponseEntity.ok(service.getCountryBacen(id));
     }
 }

@@ -1,5 +1,6 @@
 package itallodavid.github.citiesapi.services;
 
+import itallodavid.github.citiesapi.dto.UniqueValueResponseDTO;
 import itallodavid.github.citiesapi.exceptions.EntityNotFoundException;
 import itallodavid.github.citiesapi.models.Country;
 import itallodavid.github.citiesapi.repositories.CountryRepository;
@@ -29,5 +30,10 @@ public class CountryService {
         }
 
         return country.get();
+    }
+
+    public UniqueValueResponseDTO getCountryBacen(final Long countryId) {
+        Country country = this.getCountry(countryId);
+        return new UniqueValueResponseDTO(country.getBacen());
     }
 }
