@@ -24,6 +24,11 @@ public class StateController {
         return service.states(pageable);
     }
 
+    @GetMapping(path = "/{id}",produces = MediaType.APPLICATION_JSON_VALUE)
+    public State getState(final @PathVariable Long id) throws EntityNotFoundException{
+        return service.getState(id);
+    }
+
     @GetMapping( path = "/{id}/ddd" ,produces = MediaType.APPLICATION_JSON_VALUE)
     public List<Integer> stateDDD(final @PathVariable Long id) throws EntityNotFoundException {
         return service.stateDDD(id);

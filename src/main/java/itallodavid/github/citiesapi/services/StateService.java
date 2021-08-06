@@ -22,11 +22,16 @@ public class StateService {
         return repository.findAll(pageable);
     }
 
-    public List<Integer> stateDDD(final Long id) throws EntityNotFoundException {
+    public State getState(final Long id){
         Optional<State> state = repository.findById(id);
         if(state.isEmpty()){
             throw new EntityNotFoundException();
         }
-        return state.get().getDdd();
+        return state.get();
+    }
+
+    public List<Integer> stateDDD(final Long id) throws EntityNotFoundException {
+        State state = this.getState(id);
+        return state.getDdd();
     }
 }
