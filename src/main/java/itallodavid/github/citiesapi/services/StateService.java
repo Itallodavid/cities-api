@@ -40,4 +40,9 @@ public class StateService {
         State state = this.getState(id);
         return state.getCountry();
     }
+
+    public Integer stateIbge(final Long id) throws EntityNotFoundException {
+        State state = this.getState(id);
+        return state.getIbge();
+    }
 }

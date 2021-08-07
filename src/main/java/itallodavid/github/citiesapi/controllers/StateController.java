@@ -39,4 +39,9 @@ public class StateController {
     public Country stateCountry(final @PathVariable Long id) throws EntityNotFoundException {
         return service.stateCountry(id);
     }
+
+    @GetMapping(path = "/{id}/ibge", produces = MediaType.APPLICATION_JSON_VALUE)
+    public Integer stateIbge(final @PathVariable Long id) throws EntityNotFoundException {
+        return service.stateIbge(id);
+    }
 }
