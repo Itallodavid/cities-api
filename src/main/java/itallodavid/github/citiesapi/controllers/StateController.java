@@ -1,6 +1,7 @@
 package itallodavid.github.citiesapi.controllers;
 
 import itallodavid.github.citiesapi.exceptions.EntityNotFoundException;
+import itallodavid.github.citiesapi.models.Country;
 import itallodavid.github.citiesapi.models.State;
 import itallodavid.github.citiesapi.services.StateService;
 import lombok.AllArgsConstructor;
@@ -24,13 +25,18 @@ public class StateController {
         return service.states(pageable);
     }
 
-    @GetMapping(path = "/{id}",produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(path = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public State getState(final @PathVariable Long id) throws EntityNotFoundException{
         return service.getState(id);
     }
 
-    @GetMapping( path = "/{id}/ddd" ,produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(path = "/{id}/ddd", produces = MediaType.APPLICATION_JSON_VALUE)
     public List<Integer> stateDDD(final @PathVariable Long id) throws EntityNotFoundException {
         return service.stateDDD(id);
+    }
+
+    @GetMapping(path = "/{id}/country", produces = MediaType.APPLICATION_JSON_VALUE)
+    public Country stateCountry(final @PathVariable Long id) throws EntityNotFoundException {
+        return service.stateCountry(id);
     }
 }

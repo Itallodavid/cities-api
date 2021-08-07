@@ -1,6 +1,7 @@
 package itallodavid.github.citiesapi.services;
 
 import itallodavid.github.citiesapi.exceptions.EntityNotFoundException;
+import itallodavid.github.citiesapi.models.Country;
 import itallodavid.github.citiesapi.models.State;
 import itallodavid.github.citiesapi.repositories.StateRepository;
 import lombok.AllArgsConstructor;
@@ -22,7 +23,7 @@ public class StateService {
         return repository.findAll(pageable);
     }
 
-    public State getState(final Long id){
+    public State getState(final Long id) throws EntityNotFoundException {
         Optional<State> state = repository.findById(id);
         if(state.isEmpty()){
             throw new EntityNotFoundException();
@@ -33,5 +34,10 @@ public class StateService {
     public List<Integer> stateDDD(final Long id) throws EntityNotFoundException {
         State state = this.getState(id);
         return state.getDdd();
+    }
+
+    public Country stateCountry(final Long id) throws EntityNotFoundException {
+        State state = this.getState(id);
+        return state.getCountry();
     }
 }
